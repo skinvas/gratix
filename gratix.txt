@@ -1,0 +1,120 @@
+30.Lock and Monitor 
+
+Monitor.Enter(object);
+try
+{
+   // Your code here...
+}
+finally
+{
+   Monitor.Exit(object);
+}
+
+Additionally monitor provides wait and pulse
+
+31.
+ask about delegates 
+
+32.
+
+After a lot of head-scratching I've discovered a difference myself this afternoon.
+
+I wanted to load a DLL at runtime, and the DLL lived in another directory. That DLL had its own dependencies (DLLs) which also lived in that same directory.
+
+LoadFile(): Loaded the specific DLL, but not the dependencies. So when the first call was made from within the DLL to one of those other DLLs it threw a FileNotFoundException.
+
+LoadFrom(): Loaded the DLL that I specified and also all the dependencies that lived in that directory.
+
+33.if you want to redirect the further requests to some other server which can handle them, you'd use GC.RegisterForFullGCNotification, GC.WaitForFullGCApproach and GC.WaitForFullGCComplete methods respectively.
+
+WaitForFullGCApproach will block till the GC decides to do a full gc, it is a notification for you to proactively redirect the requests or take some action.
+
+Then WaitForFullGCComplete will block till the full gc is completed. It is a notification for you to start processing the requests again.
+
+39.WebClient.UploadValuesTaskAsync Method
+
+41.Dictionary:
+It returns error if we try to find a key which does not exist.
+It is faster than a Hashtable because there is no boxing and unboxing.
+Only public static members are thread safe.
+Dictionary is a generic type which means we can use it with any data type.
+Hashtable:
+It returns null if we try to find a key which does not exist.
+It is slower than dictionary because it requires boxing and unboxing.
+All the members in a Hashtable are thread safe,
+Hashtable is not a generic type,
+
+SortedList:
+internally store a key and a value for each collection item.
+provide objects to Iterators in ascending order based on the key.
+ensure that item are accessible by zero-based index or by key.
+
+
+44.
+
+53.validation 
+
+52.encryption 
+
+56.checked to raise the overflow exception 
+
+
+ static int CheckedMethod()
+    {
+        int z = 0;
+        try
+        {
+            // The following line raises an exception because it is checked.
+            z = checked(maxIntValue + 10);
+        }
+        catch (System.OverflowException e)
+        {
+            // The following line displays information about the error.
+            Console.WriteLine("CHECKED and CAUGHT:  " + e.ToString());
+        }
+        // The value of z is still 0.
+        return z;
+    } 
+
+57.Logging Exception using System FIle :no idea
+ 
+
+62. p-42
+
+64.
+
+65.Explanation/Reference:
+The AssemblyName object contains information about an assembly, which you can use to bind to that
+assembly. An assembly's identity consists of the following:
+Simple name.
+Version number.
+Cryptographic key pair.
+Supported culture.
+B: AssemblyCultureAttribute
+Specifies which culture the assembly supports.
+The attribute is used by compilers to distinguish between a main assembly and a satellite assembly. A main
+assembly contains code and the neutral culture's resources. A satellite assembly contains only resources for a
+particular culture, as in [assembly:AssemblyCultureAttribute("de")]
+C: AssemblyVersionAttribute
+Specifies the version of the assembly being attributed.
+The assembly version number is part of an assembly's identity and plays a key part in binding to the assembly
+and in version policy
+
+72.
+
+ReflectionOnlyLoad(Byte[])	
+Loads the assembly from a common object file format (COFF)-based image containing an emitted assembly. The assembly is loaded into the reflection-only context of the caller's application domain.
+
+
+ReflectionOnlyLoad(String)	
+Loads an assembly into the reflection-only context, given its display name.
+
+Assembly.Load(bytes);
+
+
+74.
+The code must load the assembly. Once the assembly is loaded, the code
+must be able to read the assembly metadata, but the code must be denied access from executing code from
+the assembly.
+
+78.54
