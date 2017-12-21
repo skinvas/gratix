@@ -1,0 +1,67 @@
+73.
+78.catch (Exception e)  
+{  
+   EventLog.WriteEntry("IN Application Exception Create",e.Message+"Trace"+   
+   e.StackTrace,EventLogEntryType.Error,121,short.MaxValue);  
+}  
+
+The System.Diagnostics namespaces contain types that enable you to interact with system processes, event logs, and performance counters
+
+The .NET Framework contains a mechanism called a Trace Listener. This Listener is an object which directs the trace output to an appropriate target, such as an error log for example.
+
+<configuration>
+  <system.diagnostics>
+    <trace autoflush="false" indentsize="4">
+      <listeners>
+        <add name="myListener" 
+          type="System.Diagnostics.TextWriterTraceListener" 
+          initializeData="TextWriterOutput.log" />
+        <remove name="Default" />
+      </listeners>
+    </trace>
+  </system.diagnostics>
+</configuration>
+
+	Logger.Info("Application started.", "MyApp");
+        Logger.Info("working...", "MyApp");
+        Logger.Warning("Application about to exit!", "MyApp");
+        Logger.Info("Application finished.", "MyApp"); 
+
+
+XmlWriterTraceListener(Stream)
+Initializes a new instance of the XmlWriterTraceListener class, using the specified stream as the recipient of the debugging and tracing output.
+
+
+
+TextWriterTraceListener()	
+Initializes a new instance of the TextWriterTraceListener class with TextWriter as the output recipient.
+
+
+match class
+82...................
+https://docs.microsoft.com/en-us/dotnet/standard/base-types/custom-numeric-format-strings#SpecifierD
+
+86
+
+87:page:61Produce program database (PDB) information when you compile the code.
+PDBs contain debugging symbols, so you can ship a compiled binary to your customer without exposing your source code algorithms and other private details to them.
+
+If your app goes wrong on a customer site, you can get a crash dump from them (using DrWatson), bring it back to your dev workstation and debug the crash, the debugger will use the symbols file in conjunction with the crash to show you the source code, data structures etc. In many cases, all you have to do is open the crash dump and the debugger will take you directly to the source code of the exception, and show you variables and threads too.
+
+That's the primary use of them, they're invaluable when a customer reports a crash. The things you need to know about using them though - they are only valid for the build that created them, so if you recompile, your symbols file is next to worthless.
+
+90.
+What is conditional compilation?
+
+Conditional compilation is the process of defining compiler directives that cause different parts of the code to be compiled, and others to be ignored. This technique can be used in a cross-platform development scenario to specify parts of the code that are compiled specific to a particular platform.
+The following example shows how to conditionally include namespaces using the #if…#else…#endif directive in C#.
+
+#if CONDITION
+using Conditional.Namespace;
+#else
+using Another.Namespace;
+#endif
+
+Use one debug version to connect to the development database, and a standard version to connect to the live
+database.
+
